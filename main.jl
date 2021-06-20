@@ -13,6 +13,11 @@
 include("Tmp.jl")
 import .Tmp
 Tmp.say_hello()
+Hilbert_to_Liouville_index(4)
+H = [1 8;
+     8 -1]
+Tmp.CommutatorMatrix(H)
+Tmp.AntiCommutatorMatrix(H)
 
 @show ndim,dt,nslice
 VinitArray = zeros(ndim,nslice)
