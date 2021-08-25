@@ -15,7 +15,8 @@ import .Tmp
 Tmp.say_hello()
 Tmp.Hilbert_to_Liouville_index(4)
 H = [1 8;
-     8 -1]
+     8 -1];
+
 Tmp.CommutatorMatrix(H)
 Tmp.AntiCommutatorMatrix(H)
 
@@ -107,11 +108,9 @@ while abs(1 - Phi0) >= precision
             VnextArray[2,ti]*SmatArray[:,:,2] +
             VnextArray[3,ti]*SmatArray[:,:,3]
 
-        UdtArray[:,:,ti] = exp(-1im * dt * HtArray[:,:,ti])
-
+        UdtArray[:,:,ti]         = exp(-1im * dt * HtArray[:,:,ti])
         UtforwardArray[:,:,ti+1] = UdtArray[:,:,ti]*UtforwardArray[:,:,ti]
-
-        RhotArray[:,:,ti+1] = UtforwardArray[:,:,ti+1] * Rho_init * UtforwardArray[:,:,ti+1]
+        RhotArray[:,:,ti+1]      = UtforwardArray[:,:,ti+1] * Rho_init * UtforwardArray[:,:,ti+1]
 
         PtArray[1,ti+1] = RhotArray[1,1,ti+1]
         PtArray[2,ti+1] = RhotArray[2,2,ti+1]
@@ -138,4 +137,5 @@ while abs(1 - Phi0) >= precision
     VnextArray = VpreArray + epsilon * DPhi0Array
     VpreArray = VnextArray
 end
+
 

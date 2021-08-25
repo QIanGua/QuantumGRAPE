@@ -1,2 +1,2 @@
 * README
-This project is used to generate high fidelity signal for single qubit gate with **GRAPE** algorithm.
+This project is used to generate high fidelity signal for single qubit gate with *GRAPE* algorithm.
