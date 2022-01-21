@@ -45,9 +45,12 @@ plot(sol2,vars = (1,2))
 
 using SparseArrays
 f3(u,p,t) = sparse(A)*u
+u0 = [1.0;0.0]
+tspan = (0.0,2*pi)
 prob3 = ODEProblem(f3,u0,tspan)
-sol3 = solve(prob3,RK4())
+sol3 = solve(prob3,RK4(),dt=1e-3,adaptive=false)
 
+typeof(sol3)
 plot(sol3,vars = (1,2))
 # value check
 sol.t[1]
@@ -57,3 +60,8 @@ sol2.t[1]
 sol2.u[1][1:2]
 sol.t
 sol2.t
+# save solution
+using OrdinaryDiffEq, DataFrames, CSV
+
+df = DataFrame(sol3)
+CSV.write("out.csv",df)
